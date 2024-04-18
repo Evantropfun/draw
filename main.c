@@ -22,7 +22,7 @@ Détails :
 
 unsigned char *data; // Pointeur vers les données brutes du fichier .bmp, ne pas confondre avec le tableau de pixels.
 unsigned char *brightArray; // Données des moyennes des composantes pour la détection de contour. (8 bits par pixels)
-long long int len; // Longueur en octet du fichier .bmp.
+long len; // Longueur en octet du fichier .bmp.
 
 unsigned int width; // Largeur de l'image
 unsigned int height; // Longueur de l'image
@@ -61,7 +61,7 @@ int main(int argc, char const *argv[])
 
 	//Récupération de la longueur du fichier
 	fseek(inputFile, 0, SEEK_END);
-	fgetpos(inputFile, &len);
+	len = ftell(inputFile);
 
 	data = malloc(len); // Alloue de la RAM.
 	fseek(inputFile, 0, SEEK_SET);
